@@ -152,19 +152,25 @@
         invert-y = <INVERT_Y>;
     };
 
+    scroll_layer_defaults: scroll_layer_defaults {
+        compatible = "zmk,custom-scroll-layers";
+        layers = <SCROLL_LAYER_1 SCROLL_LAYER_2>;
+    };
+
+    scroll_layer_gate: scroll_layer_gate {
+        compatible = "zmk,input-processor-scroll-layer";
+        #input-processor-cells = <0>;
+        input-processors = <&xy_clipper>,
+                           <&scroll_motion_scaler>,
+                           <&to_wheel>;
+    };
+
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
         input-processors = <&sensor_rotation>,
+                           <&scroll_layer_gate>,
                            <&motion_scaler>;
-
-        scroll {
-            layers = <SCROLL_LAYER_1 SCROLL_LAYER_2>;
-            input-processors = <&sensor_rotation>,
-                               <&xy_clipper>,
-                               <&scroll_motion_scaler>,
-                               <&to_wheel>;
-        };
     };
 };
