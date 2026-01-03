@@ -157,24 +157,24 @@
         compatible = "zmk,custom-scroll-layers";
         layers = <SCROLL_LAYER_1 SCROLL_LAYER_2>;
     };
+#endif
 
     scroll_layer_gate: scroll_layer_gate {
         compatible = "zmk,input-processor-scroll-layer";
         #input-processor-cells = <0>;
+        layer-1 = <SCROLL_LAYER_1>;
+        layer-2 = <SCROLL_LAYER_2>;
         input-processors = <&xy_clipper>,
                            <&scroll_motion_scaler>,
                            <&to_wheel>;
     };
-#endif
 
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
 
         input-processors = <&sensor_rotation>,
-#if IS_ENABLED(CONFIG_ZMK_CUSTOM_CONFIG)
                            <&scroll_layer_gate>,
-#endif
                            <&motion_scaler>;
     };
 };
