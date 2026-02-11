@@ -22,7 +22,18 @@
     quick-tap-ms = <150>; // change 200 to 150
 };
 
-/ { 
+/ {
+    behaviors {
+        mck_mt: mck_mt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <150>;
+            bindings = <&kp>, <&mck>;
+            display-name = "Mod-Tap (meteorite)";
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
