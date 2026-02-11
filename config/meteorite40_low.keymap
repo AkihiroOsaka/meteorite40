@@ -5,10 +5,10 @@
 
 #include <behaviors/custom_config.dtsi>
 #include <behaviors/meteorite_custom_key.dtsi>
-#include <behaviors/meteorite_key_or_custom.dtsi>
 #include <behaviors/meteorite_bt_os.dtsi>
 #include <behaviors/meteorite_mod_key.dtsi>
 #include <behaviors/meteorite_os_key.dtsi>
+#include <behaviors/meteorite_smart_toggle.dtsi>
 #include <dt-bindings/zmk/custom_config.h>
 #include <dt-bindings/zmk/meteorite_custom_keys.h>
 #include <dt-bindings/zmk/meteorite_bt_os.h>
@@ -25,7 +25,7 @@
     quick-tap-ms = <150>; // change 200 to 150
 };
 
-&mck_or_kp {
+&mst {
     alt-cmd-tab = <&alt_cmd_tab>;
 };
 
@@ -36,8 +36,17 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <150>;
-            bindings = <&mck>, <&mck_or_kp>;
-            display-name = "Mod-Tap (meteorite)";
+            bindings = <&mck>, <&kp>;
+            display-name = "meteorite mod-tap (OS key + key)";
+        };
+
+        mck_mt_st: mck_mt_st {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            bindings = <&mck>, <&mst>;
+            display-name = "meteorite mod-tap (OS key + smart toggle)";
         };
 
         alt_cmd_tab: alt_cmd_tab {
@@ -156,5 +165,7 @@
         };
     };
 };
+
+
 
 
