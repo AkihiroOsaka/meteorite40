@@ -45,10 +45,6 @@
         };
     };
 
-    &mck_or_kp {
-        alt-cmd-tab = <&alt_cmd_tab>;
-    };
-
     combos {
         compatible = "zmk,combos";
 
@@ -155,4 +151,8 @@
 			>;
         };
     };
+};
+
+&mck_or_kp {
+    alt-cmd-tab = <&alt_cmd_tab>;
 };
