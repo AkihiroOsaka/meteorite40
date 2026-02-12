@@ -33,7 +33,5 @@ manifest:
     # 修正ポイント：名前を最新のモジュール名に合わせ、pathを追加
     - name: prospector-zmk-module
       remote: prospector
-      revision: v2.0.0
+      revision: main
       path: modules/prospector-zmk-module
-  self:
-    path: config
