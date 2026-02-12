@@ -7,7 +7,7 @@
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 200
 #include <dt-bindings/zmk/pointing.h>
 
-/* ZMK v4 用のレイヤー名定義（Prospector表示用） */
+/* ZMK v4 / Prospector レイヤー定義 */
 #define L_BASE 0
 #define L_SYMB 1
 #define L_NUMA 2
@@ -36,12 +36,16 @@
         };
     };
 
-    /* リンクエラー対策: 入力プロセッサの明示的な定義 */
-    /* zip_xy_scaler が ord_204 などの実体としてリンクされます */
+    /* 入力プロセッサの定義：リンクエラー解消の核 */
     zip_xy_scaler: zip_xy_scaler {
         compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <2>;
         type = <INPUT_REL_XY>;
+    };
+
+    input_processors {
+        compatible = "zmk,input-processors";
+        /* システムが zip_xy_scaler を確実に参照できるようにします */
     };
 
     combos {
@@ -49,49 +53,49 @@
 
         lang1 {
             bindings = <&kp LANG1>;
-            key-positions = <12 13>; /* D + F */
+            key-positions = <12 13>;
             layers = <0>;
         };
 
         lang2 {
             bindings = <&kp LANG2>;
-            key-positions = <16 17>; /* J + K */
+            key-positions = <16 17>;
             layers = <0>;
         };
 
         esc {
             bindings = <&kp ESCAPE>;
-            key-positions = <20 21>; /* Z + X */
+            key-positions = <20 21>;
             layers = <0>;
         };
 
         tab {
             bindings = <&kp TAB>;
-            key-positions = <0 1>; /* Q + W */
+            key-positions = <0 1>;
             layers = <0>;
         };
 
         home {
             bindings = <&kp HOME>;
-            key-positions = <16 17>; /* J + K (on layer 2) */
+            key-positions = <16 17>;
             layers = <2>;
         };
 
         end {
             bindings = <&kp END>;
-            key-positions = <18 19>; /* L + - (on layer 2) */
+            key-positions = <18 19>;
             layers = <2>;
         };
 
         ctrl_home {
             bindings = <&kp LC(HOME)>;
-            key-positions = <16 18>; /* J + L (on layer 2) */
+            key-positions = <16 18>;
             layers = <2>;
         };
 
         ctrl_end {
             bindings = <&kp LC(END)>;
-            key-positions = <17 19>; /* K + - (on layer 2) */
+            key-positions = <17 19>;
             layers = <2>;
         };
     };
@@ -129,7 +133,7 @@
         };
 
         layer_2 {
-            display-name = "NUM / ARROW";
+            display-name = "NUMA";
             bindings = <
                 &kp ASTRK        &kp N7     &kp N8     &kp N9     &kp PLUS                        &kp LG(LS(S)) &kp LC(MINUS) &kp LC(EQUAL) &kp C_VOL_DN &kp C_VOL_UP
                 &kp SLASH        &kp N4     &kp N5     &kp N6     &kp MINUS                       &none         &kp LEFT      &kp UP        &kp DOWN     &kp RIGHT
@@ -143,7 +147,7 @@
         };
 
         layer_3 {
-            display-name = "FUNCTION";
+            display-name = "FUNC";
             bindings = <
                 &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
                 &none   &none   &none   &none   &none                   &none   &none   &none   &none   &none
@@ -157,7 +161,7 @@
         };
 
         layer_4 {
-            display-name = "SETTING";
+            display-name = "SETT";
             bindings = <
                 &ccfg C_CPI_DN  &ccfg C_CPI_UP  &ccfg C_ROT_DN   &ccfg C_ROT_UP   &ccfg C_SCALE_TOG                  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
                 &ccfg C_SDIV_DN &ccfg C_SDIV_UP &ccfg C_SCRH_TOG &ccfg C_SCRV_TOG &none                              &bt BT_CLR     &bt BT_CLR_ALL  &none         &none         &none
