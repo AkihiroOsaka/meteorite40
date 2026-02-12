@@ -27,7 +27,6 @@ manifest:
     - name: zmk-feature-meteorite-config
       remote: iwk7273
       revision: main
-    # 直接URLを指定することで、リポジトリ取得エラーを回避します
     - name: prospector-zmk-module
       url: https://github.com/t-ogura/prospector-zmk-module
       revision: main
