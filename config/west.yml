@@ -4,6 +4,9 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: iwk7273
       url-base: https://github.com/iwk7273
+    # 追記：t-ogura氏のリモートを追加
+    - name: t-ogura
+      url-base: https://github.com/t-ogura
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -26,6 +29,10 @@ manifest:
       revision: main
     - name: zmk-feature-meteorite-config
       remote: iwk7273
+      revision: main
+    # 追記：Prospector Scannerモジュールを追加
+    - name: zmk-prospector-scanner
+      remote: t-ogura
       revision: main
   self:
     path: config
