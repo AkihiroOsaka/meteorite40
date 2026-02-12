@@ -4,9 +4,6 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: iwk7273
       url-base: https://github.com/iwk7273
-    # リモート名を prospector に統一
-    - name: prospector
-      url-base: https://github.com/t-ogura
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -30,8 +27,10 @@ manifest:
     - name: zmk-feature-meteorite-config
       remote: iwk7273
       revision: main
-    # 修正ポイント：名前を最新のモジュール名に合わせ、pathを追加
+    # 直接URLを指定することで、リポジトリ取得エラーを回避します
     - name: prospector-zmk-module
-      remote: prospector
+      url: https://github.com/t-ogura/prospector-zmk-module
       revision: main
       path: modules/prospector-zmk-module
+  self:
+    path: config
