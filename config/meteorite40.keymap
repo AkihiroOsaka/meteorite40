@@ -127,4 +127,55 @@
             bindings = <
                 &kp EXCL   &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                       &none      &kp LPAR   &kp RPAR   &kp LBKT   &kp RBKT
                 &kp CARET  &kp AMPS  &kp STAR  &kp BSLH  &kp PIPE                        &kp SEMI   &kp COLON  &kp SQT    &kp DQT    &kp EQUAL
-                &none      &none     &none     &none     &none      &mkp MB4
+                &none      &none     &none     &none     &none      &mkp MB4  &mkp MB5   &kp GRAVE  &kp TILDE  &kp LBRC   &kp RBRC   &kp PLUS
+                                     &trans    &trans    &trans    &trans    &trans     &trans    &kp DEL     &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        layer_2 {
+            display-name = "NUMA";
+            bindings = <
+                &kp ASTRK        &kp N7     &kp N8     &kp N9     &kp PLUS                        &kp LG(LS(S)) &kp LC(MINUS) &kp LC(EQUAL) &kp C_VOL_DN &kp C_VOL_UP
+                &kp SLASH        &kp N4     &kp N5     &kp N6     &kp MINUS                       &none         &kp LEFT      &kp UP        &kp DOWN     &kp RIGHT
+                &kp N0           &kp N1     &kp N2     &kp N3     &kp DOT   &mkp MB4   &mkp MB5   &none         &kp LG(LEFT)  &kp LG(UP)    &kp LG(DOWN) &kp LG(RIGHT)
+                                         &trans            &trans     &trans     &trans    &trans         &trans  &trans    &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        layer_3 {
+            display-name = "FUNC";
+            bindings = <
+                &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10
+                &none   &none   &none   &none   &none                   &none   &none   &none   &none   &none
+                &none   &none   &none   &none   &none   &none   &none   &none   &none   &none    &none  &none
+                                &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        layer_4 {
+            display-name = "SETT";
+            bindings = <
+                &ccfg C_CPI_DN  &ccfg C_CPI_UP  &ccfg C_ROT_DN   &ccfg C_ROT_UP   &ccfg C_SCALE_TOG                  &bt BT_SEL 0   &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+                &ccfg C_SDIV_DN &ccfg C_SDIV_UP &ccfg C_SCRH_TOG &ccfg C_SCRV_TOG &none                              &bt BT_CLR     &bt BT_CLR_ALL  &none         &none         &none
+                &ccfg C_SAVE    &ccfg C_RESET   &none          &none          &none                 &none &none      &bootloader    &none           &none         &none         &none
+                                                            &trans       &trans  &trans  &trans  &trans  &trans    &trans        &trans
+            >;
+
+            sensor-bindings =
+                <&inc_dec_kp LC(MINUS) LC(EQUAL)>,
+                <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+    };
+};
